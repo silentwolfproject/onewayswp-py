@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onewayswp"
+version = "0.1.0"
+description = "OnewaySWP - Offline One-Way License Framework"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Juan Hulu" }]
+keywords = ["license", "offline", "cross-platform", "one-way"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/silentwolfproject/onewayswp-py"
+Repository = "https://github.com/silentwolfproject/onewayswp-py"
+Documentation = "https://github.com/silentwolfproject/onewayswp#readme"
+
+[tool.setuptools]
+packages = ["onewayswp"]
+
+[tool.setuptools.package-data]
+onewayswp = [
+    "lib/**/*.dll",
+    "lib/**/*.so",
+    "lib/**/*.dylib",
+]
