@@ -129,7 +129,7 @@ result = admin.create_license(
     type="date",
     expires="2027-12-31",
     additional_data={
-        "client_name": "PT Jaya Abadi"
+        "client_name": "username123"
     }
 )
 
