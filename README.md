@@ -25,6 +25,15 @@
 
 ---
 
+<div align="center">
+
+## Jump To
+[**Features**](#-features)  ·  [**Installation**](#installation)  ·  [**Quick Start**](#quick-start)  ·  [**License Types**](#license-types)  ·  [**API Reference**](#api-reference)  ·  [**Examples**](#examples)  ·  [**Security**](#security-notes)
+
+</div>
+
+---
+
 > **OnewaySWP** is a Python library for building **one-way license verification systems without requiring a server**.
 >
 > Licenses are generated on the admin side, distributed to clients, and verified entirely offline.
@@ -85,16 +94,21 @@ from onewayswp import Admin
 # Create admin instance
 admin = Admin()
 
-# Generate secret key and public key
-secret, public = admin.generate_keys(auto_save=True)
+# Load existing key pair.
+# If it does not exist yet, it will be generated automatically.
+admin.load_keys(auto_generate=True)
 
 # Display keys
-print("Secret:", secret)
-print("Public:", public)
+print("Secret:", admin.secret_key)
+print("Public:", admin.public_key)
 ```
 
-> **Important:** The secret key is used to create licenses and must remain private.
-> The public key is distributed to client applications for verification.
+> **Recommended:** Always use load_keys(auto_generate=True) on the admin side.
+
+Manual key generation via generate_keys() should only be used when you intentionally want to replace the existing key pair. Replacing the key pair will invalidate all previously issued licenses.
+
+Important: The secret key is used to sign licenses and must remain private.
+The public key is distributed to client applications for verification.
 
 ---
 
@@ -164,7 +178,7 @@ else:
 ┌─────────────────────┐
 │        ADMIN        │
 ├─────────────────────┤
-│ Generate Key Pair   │
+│ Load Key Pair   │
 │         ↓           │
 │ Create License      │
 │         ↓           │
@@ -340,7 +354,7 @@ Validation and operation methods use a consistent dictionary-based response form
     "created_at": "2026-10-03 12:00:00",
     "last_time": "2026-10-03 12:05:00",
     "additional_data": {
-        "client_name": "PT Jaya Abadi"
+        "hardware_id": "1234567890"
     }
 }
 ```
@@ -502,7 +516,7 @@ result = admin.create_license(
     type="date",
     expires="2027-12-31",
     additional_data={
-        "client_name": "PT Jaya Abadi",
+        "client_name": "user12345",
         "plan": "pro"
     }
 )
@@ -528,7 +542,7 @@ result = admin.create_license(
     type="credit",
     credits=100,
     additional_data={
-        "client_name": "Toko ABC"
+        "client_name": "user12345"
     }
 )
 
@@ -550,7 +564,7 @@ result = admin.create_license(
     type="duration",
     hours=2,
     additional_data={
-        "client_name": "User XYZ"
+        "client_name": "user12345"
     }
 )
 
@@ -1046,13 +1060,13 @@ print(info["arch"])
 * **Author — TikTok**
   https://tiktok.com/@juanhulu.xyz
 
-* **Project — TikTok**
-  https://tiktok.com/@juanhulu.xyz
+* **SWP — TikTok**
+  https://tiktok.com/@silentwolfproject
 
 * **Author — Instagram**
   https://www.instagram.com/juanhulu.xyz
 
-* **Project — Instagram**
+* **SWP — Instagram**
   https://www.instagram.com/silentwolfproject
 
 * **GitHub Pages**
