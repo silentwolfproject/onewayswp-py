@@ -122,7 +122,7 @@ from onewayswp import Admin
 admin = Admin()
 
 # Load existing keys
-admin.load_keys(auto_generate=False)
+admin.load_keys(auto_generate=True)
 
 # Create a license
 result = admin.create_license(
@@ -479,7 +479,7 @@ admin = Admin()
 
 secret, public = admin.load_keys(
     validate=True,
-    auto_generate=False
+    auto_generate=True
 )
 
 print("Keys loaded successfully")

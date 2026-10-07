@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "onewayswp"
-version = "0.1.0"
+version = "0.1.0.post1"
 description = "OnewaySWP - Offline One-Way License Framework"
 readme = "README.md"
 requires-python = ">=3.8"
-license = { text = "MIT" }
+license = "MIT"
 authors = [{ name = "Juan Hulu" }]
 keywords = ["license", "offline", "cross-platform", "one-way"]
 classifiers = [
